@@ -45,6 +45,12 @@
       margin-right: 10px;
       cursor: pointer;
     }
+    .home-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
     #summary {
       display: none;
     }
@@ -54,11 +60,18 @@
 </head>
 <body>
   <h1>USCIS Naturalization Test Practice Quiz</h1>
+  <div id="home-container" class="card">
+    <div class="home-container">
+      <h4>Choose a quiz type</h4>
+      <button onclick="startQuiz(10)">10 random questions</button><br/>
+      <button onclick="startQuiz(100)">All 100 random questions</button><br/>
+    </div>
+  </div>
   <div id="quiz-container" class="card"></div>
   <div id="summary" class="card">
     <h2>Quiz Summary</h2>
     <p id="results"></p>
-    <div class="bottom-buttons"><button onclick="startQuiz()">Start New Quiz</button></div>
+    <div class="bottom-buttons"><button onclick="showHome()">Start New Quiz</button></div>
   </div>
 
   <script>
@@ -348,11 +361,23 @@ Christmas` }
     let quizSet = [];
     let current = 0;
     let correctAnswers = [];
-    const container = document.getElementById('quiz-container');
+    let numberOfQuestions = 10;
 
-    function startQuiz() {
+    const container = document.getElementById('quiz-container');
+    const homeContainer = document.getElementById('home-container');
+    const summaryContainer = document.getElementById('summary');
+
+    function showHome() {
+      container.style.display = 'none';
+      homeContainer.style.display = 'block';
+      summaryContainer.style.display = 'none';
+    }
+    
+    function startQuiz(questionsSelected) {
+      numberOfQuestions = questionsSelected;
+      homeContainer.style.display = 'none';
       container.style.display = 'block';
-      quizSet = questions.sort(() => 0.5 - Math.random()).slice(0, 10);
+      quizSet = questions.sort(() => 0.5 - Math.random()).slice(0, numberOfQuestions);
       current = 0;
       correctAnswers = [];
       document.getElementById('summary').style.display = 'none';
@@ -371,7 +396,7 @@ Christmas` }
 
       const card = document.createElement('div');
       card.innerHTML = `
-        <div class="question"><strong>Question ${current + 1}:</strong> ${q.question}</div>
+        <div class="question"><strong>Question ${current + 1} of ${numberOfQuestions}:</strong> ${q.question}</div>
         <button onclick="showAnswer()">Show Answer</button>
         <div id="answer" class="answer">${q.answer}</div>
         <div class="bottom-buttons"><button onclick="nextQuestion()">Next</button> <label><input type="checkbox" id="gotItRight"> I got it right</label></div>
@@ -400,10 +425,10 @@ Christmas` }
         You answered <span class="correct">${correct} correct</span> and 
         <span class="wrong">${wrong} wrong</span> out of ${correctAnswers.length} questions.
       `;
-      document.getElementById('summary').style.display = 'block';
+      summaryContainer.style.display = 'block';
     }
 
-    startQuiz();
+    showHome();
   </script>
 </body>
 </html>
