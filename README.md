@@ -8,4 +8,4 @@ Original [questions database](https://www.uscis.gov/sites/default/files/document
 
 ## Try it
 
-Follow this link to take the test: <https://github.com/cetorres/citizenship-test>
+Follow this link to take the test: <https://cetorres.github.io/citizenship-test>
