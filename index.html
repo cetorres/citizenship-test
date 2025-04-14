@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="USCIS Naturalization Test Practice Quiz">
+  <title>USCIS Naturalization Test Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>USCIS Naturalization Test Practice Quiz</h1>
+  <div id="home-container" class="card">
+    <div class="home-container">
+      <h4>Choose a quiz type</h4>
+      <button onclick="startQuiz(10)">10 random questions</button><br/>
+      <button onclick="startQuiz(100)">All 100 random questions</button><br/>
+    </div>
+  </div>
+  <div id="quiz-container" class="card"></div>
+  <div id="summary" class="card">
+    <h2>Quiz Summary</h2>
+    <p id="results"></p>
+    <div class="bottom-buttons"><button onclick="showHome()">Start New Quiz</button></div>
+  </div>
+  <div class="footer">
+    Created with ♥ by <a href="https://github.com/cetorres" target="_blank">Carlos E. Torres</a>. 
+    See the project on <a href="https://github.com/cetorres/citizenship-test" target="_blank">GitHub</a>.
+  </div>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
