@@ -7,10 +7,13 @@ const container = document.getElementById("quiz-container");
 const homeContainer = document.getElementById("home-container");
 const summaryContainer = document.getElementById("summary");
 
-function showHome() {
+async function showHome() {
 	container.style.display = "none";
 	homeContainer.style.display = "block";
 	summaryContainer.style.display = "none";
+
+	const repName = await findRep('33433');
+	console.log('Rep name: ', repName);
 }
 
 function startQuiz(questionsSelected) {
