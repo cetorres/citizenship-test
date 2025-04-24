@@ -11,9 +11,6 @@ async function showHome() {
 	container.style.display = "none";
 	homeContainer.style.display = "block";
 	summaryContainer.style.display = "none";
-
-	const repName = await findRep('33433');
-	console.log('Rep name: ', repName);
 }
 
 function startQuiz(questionsSelected) {

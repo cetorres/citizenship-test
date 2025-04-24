@@ -1,7 +1,5 @@
-const findRepURL = 'https://ziplook.house.gov/htbin/findrep_house';
-
 const findRep = async (zip) => {
-  const res = await fetch(findRepURL, {
+  const res = await fetch('https://ziplook.house.gov/htbin/findrep_house', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -9,10 +7,10 @@ const findRep = async (zip) => {
       'Accept-Language': 'en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7',
       'Cache-Control': 'maxmax-age=0',
       'Connection': 'keep-alive',
-      'Content-Length': 9,
+      'Access-Control-Allow-Origin': '*',
       'Dnt': 1,
       'Host': 'ziplook.house.gov',
-      'Origin': 'https://www.househttps://www.house.gov',
+      'Origin': 'https://www.house.gov',
       'Referer': 'https://www.house.gov/',
       'Sec-Ch-Ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
       'Upgrade-Insecure-Requests': 1,
