@@ -24,7 +24,7 @@ async function showHome() {
 	zipInput.value = zip || "";
 	stateInput.value = state || "AL";
 	if (zip && state) {
-		findLegislators();
+		handleFindLegislators();
 	}
 }
 
@@ -75,9 +75,7 @@ function showQuestion() {
 					<div class="col">
 						<button class="btn btn-primary" onclick="nextQuestion()">Next</button>
 						<label><input type="checkbox" class="form-check-input" id="gotItRight"> I got it right</label>
-					</div>
-					<div class="col d-flex justify-content-end">
-						<button class="btn btn-primary" onclick="showHome()">Start New Quiz</button>
+						<button class="btn btn-primary" style="float:right" onclick="showHome()">New Quiz</button>
 					</div>
 				</div>
       `;
@@ -126,7 +124,7 @@ function updateQuestions() {
 	});
 }
 
-async function findLegislators() {
+async function handleFindLegislators() {
 	zip = zipInput.value;
 	state = stateInput.value;
 	localStorage.setItem("zip", zip);
@@ -135,7 +133,7 @@ async function findLegislators() {
 	legislatorsContainer.innerHTML = "";
 	if (zip && state) {
 		try {
-			legislators = await findRep(zip, state);
+			legislators = await findLegislators(zip, state);
 
 			if (!legislators) {
 				legislatorsContainer.innerHTML("No legislators found for the state and zip code.");

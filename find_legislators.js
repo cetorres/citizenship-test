@@ -1,4 +1,4 @@
-const findRep = async (zip, state) => {
+const findLegislators = async (zip, state) => {
   const governorsRes = await fetch('state_governors.json', {
     method: 'GET',
     headers: {
