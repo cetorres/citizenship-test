@@ -41,10 +41,10 @@ Senate and House (of Representatives)
   { question: "What are the two parts of the U.S. Congress?", answer: `the Senate and House (of Representatives)` },
   { question: "How many U.S. Senators are there?", answer: `one hundred (100)` },
   { question: "We elect a U.S. Senator for how many years?", answer: `six (6)` },
-  { question: "Who is one of your state's U.S. Senators now?", answer: `Rick Scott.` },
+  { question: "Who is one of your state's U.S. Senators now?", answer: `<senators>` },
   { question: "The House of Representatives has how many voting members?", answer: `four hundred thirty-five (435)` },
   { question: "We elect a U.S. Representative for how many years?", answer: `two (2)` },
-  { question: "Name your U.S. Representative.", answer: `Jared Moskowitz.` },
+  { question: "Name your U.S. Representative.", answer: `<representative>` },
   { question: "Who does a U.S. Senator represent?", answer: `all people of the state` },
   { question: "Why do some states have more Representatives than other states?", answer: `because of the state's population
 because they have more people
@@ -91,8 +91,8 @@ provide protection (police)
 provide safety (fire departments)
 give a driver's license
 approve zoning and land use` },
-  { question: "Who is the Governor of your state now?", answer: `Ron DeSantis.` },
-  { question: "What is the capital of your state?", answer: `Tallahassee.` },
+  { question: "Who is the Governor of your state now?", answer: `<governor>` },
+  { question: "What is the capital of your state?", answer: `<capital>` },
   { question: "What are the two major political parties in the United States?", answer: `Democratic and Republican` },
   { question: "What is the political party of the President now?", answer: `Republican` },
   { question: "What is the name of the Speaker of the House of Representatives now?", answer: `Mike Johnson` },

@@ -1,41 +1,64 @@
-const findRep = async (zip) => {
-  const res = await fetch('https://ziplook.house.gov/htbin/findrep_house', {
-    method: 'POST',
+const findRep = async (zip, state) => {
+  const governorsRes = await fetch('state_governors.json', {
+    method: 'GET',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-      'Accept-Language': 'en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7',
-      'Cache-Control': 'maxmax-age=0',
-      'Connection': 'keep-alive',
-      'Access-Control-Allow-Origin': '*',
-      'Dnt': 1,
-      'Host': 'ziplook.house.gov',
-      'Origin': 'https://www.house.gov',
-      'Referer': 'https://www.house.gov/',
-      'Sec-Ch-Ua': '"Google Chrome";v="135", "Not-A.Brand";v="8", "Chromium";v="135"',
-      'Upgrade-Insecure-Requests': 1,
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
-    body: new URLSearchParams({
-      'ZIP': zip,
-      'submit': 'Find Your Re By Zip'
-    })
   });
-  
-  if (res.status !== 200) {
-    throw new Error(`Error: ${res.status} ${res.statusText}`);
+
+  if (governorsRes.status !== 200) {
+    throw new Error(`Error: ${governorsRes.status} ${governorsRes.statusText}`);
   }
 
-  const text = await res.text();
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(text, 'text/html');
-  const repInfo = doc.getElementById('RepInfo');
-  if (!repInfo) {
-    throw new Error('No representative found for this zip code.');
+  const legislatorsRes = await fetch('legislators-current.json', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  });
+
+  if (legislatorsRes.status !== 200) {
+    throw new Error(`Error: ${legislatorsRes.status} ${legislatorsRes.statusText}`);
   }
-  const name = repInfo.querySelectorAll('a')[0].innerHTML;
-  if (!name) {
-    throw new Error('Could not find representative name.');
+
+  const zipRes = await fetch('zip_to_district.json', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  });
+
+  if (zipRes.status !== 200) {
+    throw new Error(`Error: ${zipRes.status} ${zipRes.statusText}`);
   }
-  return name;
+
+  const legislators = await legislatorsRes.json();
+  const zipData = await zipRes.json();
+  const governorsData = await governorsRes.json();
+
+  let district = zipData.filter(z => z.zcta === zip && z.state_abbr === state);
+  if (!district || district.length === 0) {
+    throw new Error('No district found for this zip code.');
+  }
+  district = district.map(d => ({ state_abbr: d.state_abbr, cd: parseInt(d.cd) }));
+  
+  const reps = legislators.filter(leg => leg.terms[leg.terms.length - 1].state === district[0].state_abbr
+    && leg.terms[leg.terms.length - 1].district === district[0].cd
+    && leg.terms[leg.terms.length - 1].type === 'rep').map(leg => ({ name: leg.name.official_full, party: leg.terms[leg.terms.length - 1].party }));
+  const senators = legislators.filter(leg => leg.terms[leg.terms.length - 1].state === district[0].state_abbr
+    && leg.terms[leg.terms.length - 1].type === 'sen').map(leg => ({ name: leg.name.official_full, party: leg.terms[leg.terms.length - 1].party }));
+
+  const governor = governorsData.filter(gov => gov.state_abbr === district[0].state_abbr).map(gov => ({ name: `${gov.first_name} ${gov.last_name}`, capital: gov.city }))[0];
+  
+  return {
+    district: district[0].cd,
+    zip: zip,
+    state: state,
+    representatives: reps,
+    senators: senators,
+    governor: governor
+  };
 };

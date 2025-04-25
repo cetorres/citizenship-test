@@ -5,22 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="USCIS Naturalization Test Practice Quiz">
   <title>USCIS Naturalization Test Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>USCIS Naturalization Test Practice Quiz</h1>
-  <div id="home-container" class="card">
+  <div id="home-container" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
     <div class="home-container">
       <h4>Choose a quiz type</h4>
-      <button onclick="startQuiz(10)">10 random questions</button><br/>
-      <button onclick="startQuiz(100)">All 100 random questions</button><br/>
+      <button class="btn btn-primary m-2" onclick="startQuiz(10)">10 random questions</button>
+      <button class="btn btn-primary" onclick="startQuiz(100)">All 100 random questions</button><br/>
+      <h4>Find your Legislators</h4>
+      <form>
+        <div class="mb-3">
+          <label for="state" class="form-label">Choose your state:</label> 
+          <select id="state" class="form-select" required>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <optgroup label=""></optgroup> <!-- Empty option group for better spacing -->
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+            <option value="PR">Puerto Rico</option>
+            <option value="GU">Guam</option>
+            <option value="VI">U.S. Virgin Islands</option>
+            <option value="MP">Northern Mariana Islands</option>
+            <option value="AS">American Samoa</option>
+            <option value="FM">Federated States of Micronesia</option>
+            <option value="MH">Marshall Islands</option>
+            <option value="PW">Palau</option>
+            <option value="AA">Armed Forces Americas</option>
+            <option value="AE">Armed Forces Europe</option>
+            <option value="AP">Armed Forces Pacific</option>
+            <option value="FM">Federated States of Micronesia</option>
+            <option value="MH">Marshall Islands</option>
+            <option value="PW">Palau</option>
+            <option value="AA">Armed Forces Americas</option>
+            <option value="AE">Armed Forces Europe</option>
+            <option value="AP">Armed Forces Pacific</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <label for="zip" class="form-label">Enter your zip code:</label>
+          <input type="text" id="zip" class="form-control" placeholder="Zip Code" maxlength="5" required>
+        </div>
+        <div class="mb-3">
+          <button class="btn btn-primary mb-2 mt-2" id="find-legislators" onclick="findLegislators();return false;">Find Legislators</button>
+        </div>
+      </form>
+      <div id="legislators"></div>
     </div>
   </div>
-  <div id="quiz-container" class="card"></div>
-  <div id="summary" class="card">
+  <div id="quiz-container" class="p-4 p-md-5 border rounded-3 bg-body-tertiary"></div>
+  <div id="summary" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
     <h2>Quiz Summary</h2>
     <p id="results"></p>
-    <div class="bottom-buttons"><button onclick="showHome()">Start New Quiz</button></div>
+    <div class="bottom-buttons"><button class="btn btn-primary" onclick="showHome()">Start New Quiz</button></div>
   </div>
   <div class="footer">
     Created with ♥ by <a href="https://github.com/cetorres" target="_blank">Carlos E. Torres</a>. 

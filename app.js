@@ -2,18 +2,31 @@ let quizSet = [];
 let current = 0;
 let correctAnswers = [];
 let numberOfQuestions = 10;
+let legislators;
+let zip;
+let state;
 
 const container = document.getElementById("quiz-container");
 const homeContainer = document.getElementById("home-container");
 const summaryContainer = document.getElementById("summary");
+const zipInput = document.getElementById("zip");
+const stateInput = document.getElementById("state");
 
 async function showHome() {
 	container.style.display = "none";
 	homeContainer.style.display = "block";
 	summaryContainer.style.display = "none";
+
+	zipInput.value = zip || "";
+	stateInput.value = state || "AL";
 }
 
 function startQuiz(questionsSelected) {
+	if (!legislators) {
+		alert("Please find your legislators first.");
+		return;
+	}
+	updateQuestions();
 	numberOfQuestions = questionsSelected;
 	homeContainer.style.display = "none";
 	container.style.display = "block";
@@ -49,9 +62,9 @@ function showQuestion() {
         <div class="question"><strong>Question ${current + 1} of ${numberOfQuestions}:</strong>
 					<p>${q.question}</p>
 				</div>
-        <button onclick="showAnswer()">Show Answer</button>
+        <button class="btn btn-primary" onclick="showAnswer()">Show Answer</button>
         <div id="answer" class="answer"></div>
-        <div class="bottom-buttons"><button onclick="nextQuestion()">Next</button> <label><input type="checkbox" id="gotItRight"> I got it right</label></div>
+        <div class="bottom-buttons"><button class="btn btn-primary" onclick="nextQuestion()">Next</button> <label><input type="checkbox" class="form-check-input" id="gotItRight"> I got it right</label></div>
       `;
 	container.appendChild(card);
 	document.getElementById('answer').appendChild(ul);
@@ -79,6 +92,45 @@ function showSummary() {
         <span class="wrong">${wrong} wrong</span> out of ${correctAnswers.length} questions.
       `;
 	summaryContainer.style.display = "block";
+}
+
+function updateQuestions() {
+	questions.map((q) => {
+		q.answer = q.answer.replace(/<representative>/g, legislators.representatives.map(rep => `${rep.name} (${rep.party})`).join('\n'));
+		q.answer = q.answer.replace(/<senators>/g, legislators.senators.map(sen => `${sen.name} (${sen.party})`).join('\n'));
+		q.answer = q.answer.replace(/<governor>/g, legislators.governor.name);
+		q.answer = q.answer.replace(/<capital>/g, legislators.governor.capital);
+	});
+}
+
+async function findLegislators() {
+	zip = zipInput.value;
+	state = stateInput.value;
+	const legislatorsContainer = document.getElementById("legislators");
+	legislatorsContainer.innerHTML = "";
+	if (zip && state) {
+		try {
+			legislators = await findRep(zip, state);
+
+			if (!legislators) {
+				legislatorsContainer.innerHTML("No legislators found for the state and zip code.");
+				return;
+			}
+
+			updateQuestions();
+
+			legislatorsContainer.innerHTML = `
+			<ul>
+			<li><strong>Governor</strong>: ${legislators.governor.name}</li>
+			<li><strong>State Capital</strong>: ${legislators.governor.capital}</li>
+			<li><strong>Representative</strong>: ${legislators.representatives.map(rep => `${rep.name} (${rep.party})`).join(', ')}</li>
+			<li><strong>Senators</strong>: ${legislators.senators.map(sen => `${sen.name} (${sen.party})`).join(', ')}</li>
+			</ul>
+		`;
+		} catch (error) {
+			legislatorsContainer.innerHTML = "<strong>Error</strong>: No legislators found for the state and zip code.";
+		}
+	}
 }
 
 showHome();
