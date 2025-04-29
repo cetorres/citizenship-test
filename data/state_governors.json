@@ -24,18 +24,6 @@
       "phone": "907-465-3500"
     },
     {
-      "state_name": "American Samoa",
-      "first_name": "Lemanu P.S.",
-      "last_name": "Magua",
-      "spouse": "Ella",
-      "address1": "Executive Office Building",
-      "address2": "Third Floor",
-      "city": "Pago Pago",
-      "state_abbr": "AS",
-      "zip": 96799,
-      "phone": "684-633-4116"
-    },
-    {
       "state_name": "Arizona",
       "first_name": "Katie",
       "last_name": "Hobbs",
@@ -130,18 +118,6 @@
       "state_abbr": "GA",
       "zip": 30334,
       "phone": "404-656-1776"
-    },
-    {
-      "state_name": "Guam",
-      "first_name": "Lou",
-      "last_name": "Leon Guerrero",
-      "spouse": "Jeff Cook",
-      "address1": "Ricardo J Bordallo Governor’s Complex",
-      "address2": "513 West Marine Corps Drive",
-      "city": "Hagatna",
-      "state_abbr": "Guam",
-      "zip": 96910,
-      "phone": "671-472-8931"
     },
     {
       "state_name": "Hawaii",
@@ -432,18 +408,6 @@
       "phone": "701-328-2200"
     },
     {
-      "state_name": "Northern Mariana Islands",
-      "first_name": "Ralph Deleon Guerrero",
-      "last_name": "Torres",
-      "spouse": "Diann",
-      "address1": "Caller Box 10007",
-      "address2": "",
-      "city": "Saipan",
-      "state_abbr": "MP",
-      "zip": 96950,
-      "phone": "670-237-2200"
-    },
-    {
       "state_name": "Ohio",
       "first_name": "Mike",
       "last_name": "DeWine",
@@ -490,18 +454,6 @@
       "state_abbr": "PA",
       "zip": 17120,
       "phone": "717-787-2500"
-    },
-    {
-      "state_name": "Puerto Rico",
-      "first_name": "Pedro",
-      "last_name": "Pierluisi",
-      "spouse": "",
-      "address1": "La Fortaleza",
-      "address2": "P.O. Box 9020082",
-      "city": "San Juan",
-      "state_abbr": "PR",
-      "zip": "00902-0082",
-      "phone": "787-721-2400"
     },
     {
       "state_name": "Rhode Island",
@@ -600,18 +552,6 @@
       "phone": "804-786-2211"
     },
     {
-      "state_name": "Virgin Islands",
-      "first_name": "Albert",
-      "last_name": "Bryan",
-      "spouse": "Yolanda",
-      "address1": "Government House, 21-22 Kongens Ga",
-      "address2": "Charlotte Amalie",
-      "city": "St. Thomas",
-      "state_abbr": "VI",
-      "zip": "00802",
-      "phone": "340-774-0001"
-    },
-    {
       "state_name": "Washington",
       "first_name": "Jay",
       "last_name": "Inslee",
@@ -646,5 +586,77 @@
       "state_abbr": "WI",
       "zip": 53707,
       "phone": "608-266-1212"
+    },
+    {
+      "state_name": "Wyoming",
+      "first_name": "Mark",
+      "last_name": "Gordon",
+      "spouse": "Jennie",
+      "address1": "State Capitol",
+      "address2": "200 West 24th Street",
+      "city": "Cheyenne",
+      "state_abbr": "WY",
+      "zip": 82002,
+      "phone": "307-777-7434"
+    },
+    {
+      "state_name": "American Samoa",
+      "first_name": "Lemanu P.S.",
+      "last_name": "Magua",
+      "spouse": "Ella",
+      "address1": "Executive Office Building",
+      "address2": "Third Floor",
+      "city": "Pago Pago",
+      "state_abbr": "AS",
+      "zip": 96799,
+      "phone": "684-633-4116"
+    },
+    {
+      "state_name": "Guam",
+      "first_name": "Lou",
+      "last_name": "Leon Guerrero",
+      "spouse": "Jeff Cook",
+      "address1": "Ricardo J Bordallo Governor’s Complex",
+      "address2": "513 West Marine Corps Drive",
+      "city": "Hagatna",
+      "state_abbr": "GU",
+      "zip": 96910,
+      "phone": "671-472-8931"
+    },
+    {
+      "state_name": "Northern Mariana Islands",
+      "first_name": "Ralph Deleon Guerrero",
+      "last_name": "Torres",
+      "spouse": "Diann",
+      "address1": "Caller Box 10007",
+      "address2": "",
+      "city": "Saipan",
+      "state_abbr": "MP",
+      "zip": 96950,
+      "phone": "670-237-2200"
+    },
+    {
+      "state_name": "Puerto Rico",
+      "first_name": "Pedro",
+      "last_name": "Pierluisi",
+      "spouse": "",
+      "address1": "La Fortaleza",
+      "address2": "P.O. Box 9020082",
+      "city": "San Juan",
+      "state_abbr": "PR",
+      "zip": "00902-0082",
+      "phone": "787-721-2400"
+    },
+    {
+      "state_name": "Virgin Islands",
+      "first_name": "Albert",
+      "last_name": "Bryan",
+      "spouse": "Yolanda",
+      "address1": "Government House, 21-22 Kongens Ga",
+      "address2": "Charlotte Amalie",
+      "city": "St. Thomas",
+      "state_abbr": "VI",
+      "zip": "00802",
+      "phone": "340-774-0001"
     }
-  ]
+]

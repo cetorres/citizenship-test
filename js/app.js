@@ -12,6 +12,7 @@ const summaryContainer = document.getElementById("summary");
 const legislatorsContainer = document.getElementById("legislators");
 const zipInput = document.getElementById("zip");
 const stateInput = document.getElementById("state");
+const collapseLegislators = document.getElementById("collapseLegislators");
 
 async function showHome() {
 	container.style.display = "none";
@@ -168,4 +169,35 @@ function clearLegislators() {
 	window.location.reload();
 }
 
-showHome();
+async function loadStates() {
+	const statesRes = await fetch('../data/state_governors.json', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+	});
+	
+	if (statesRes.status !== 200) {
+    throw new Error(`Error: ${statesRes.status} ${statesRes.statusText}`);
+	}
+	
+	const statesData = await statesRes.json();
+	const states = statesData.map(state => ({ state_abbr: state.state_abbr, state_name: state.state_name }));
+
+	stateInput.innerHTML = "";
+	states.forEach(state => {
+		const option = document.createElement("option");
+		option.value = state.state_abbr;
+		option.textContent = state.state_name;
+		stateInput.appendChild(option);
+	});
+}
+
+window.onload = async () => {
+	await loadStates();
+	new bootstrap.Collapse(collapseLegislators, {
+		hide: true
+	});
+	showHome();
+};

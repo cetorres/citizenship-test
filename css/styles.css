@@ -9,13 +9,6 @@ h1,
 h2 {
 	text-align: center;
 }
-.card {
-	background: #fff;
-	padding: 20px;
-	margin: 20px 0;
-	border-radius: 12px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 .question {
 	font-size: 1.2em;
 	margin-bottom: 10px;
@@ -24,7 +17,6 @@ h2 {
 	display: none;
 	margin: 24px 0;
 	color: #2e7d32;
-	/* white-space: pre-wrap; */
 }
 .answer ul {
   padding-left: 16px;

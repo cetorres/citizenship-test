@@ -6,7 +6,7 @@
   <meta name="description" content="USCIS Naturalization Test Practice Quiz">
   <title>USCIS Naturalization Test Quiz</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <h1>USCIS Naturalization Test Practice Quiz</h1>
@@ -19,73 +19,16 @@
       <div class="accordion" id="accordionFindLegislators">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLegislators" aria-expanded="true" aria-controls="collapseLegislators">
               Find your Legislators
             </button>
           </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFindLegislators">
+          <div id="collapseLegislators" class="accordion-collapse show" data-bs-parent="#accordionFindLegislators">
             <div class="accordion-body">
               <form onsubmit="handleFindLegislators();return false;">
                 <div class="mb-3">
                   <label for="state" class="form-label">Choose your state:</label>
-                  <select id="state" class="form-select" required>
-                    <option value="AL">Alabama</option>
-                    <option value="AK">Alaska</option>
-                    <option value="AZ">Arizona</option>
-                    <option value="AR">Arkansas</option>
-                    <option value="CA">California</option>
-                    <option value="CO">Colorado</option>
-                    <option value="CT">Connecticut</option>
-                    <option value="DE">Delaware</option>
-                    <option value="FL">Florida</option>
-                    <option value="GA">Georgia</option>
-                    <option value="HI">Hawaii</option>
-                    <option value="ID">Idaho</option>
-                    <option value="IL">Illinois</option>
-                    <option value="IN">Indiana</option>
-                    <option value="IA">Iowa</option>
-                    <option value="KS">Kansas</option>
-                    <option value="KY">Kentucky</option>
-                    <option value="LA">Louisiana</option>
-                    <option value="ME">Maine</option>
-                    <option value="MD">Maryland</option>
-                    <option value="MA">Massachusetts</option>
-                    <option value="MI">Michigan</option>
-                    <option value="MN">Minnesota</option>
-                    <option value="MS">Mississippi</option>
-                    <option value="MO">Missouri</option>
-                    <option value="MT">Montana</option>
-                    <option value="NE">Nebraska</option>
-                    <option value="NV">Nevada</option>
-                    <option value="NH">New Hampshire</option>
-                    <option value="NJ">New Jersey</option>
-                    <option value="NM">New Mexico</option>
-                    <option value="NY">New York</option>
-                    <option value="NC">North Carolina</option>
-                    <option value="ND">North Dakota</option>
-                    <option value="OH">Ohio</option>
-                    <option value="OK">Oklahoma</option>
-                    <option value="OR">Oregon</option>
-                    <option value="PA">Pennsylvania</option>
-                    <option value="RI">Rhode Island</option>
-                    <option value="SC">South Carolina</option>
-                    <option value="SD">South Dakota</option>
-                    <option value="TN">Tennessee</option>
-                    <option value="TX">Texas</option>
-                    <option value="UT">Utah</option>
-                    <option value="VT">Vermont</option>
-                    <option value="VA">Virginia</option>
-                    <option value="WA">Washington</option>
-                    <option value="WV">West Virginia</option>
-                    <option value="WI">Wisconsin</option>
-                    <option value="WY">Wyoming</option>
-                    <option value="AS">American Samoa</option>
-                    <option value="DC">District of Columbia</option>
-                    <option value="GU">Guam</option>
-                    <option value="MP">Northern Mariana Islands</option>
-                    <option value="PR">Puerto Rico</option>
-                    <option value="VI">U.S. Virgin Islands</option>
-                  </select>
+                  <select id="state" class="form-select" required></select>
                 </div>
                 <div class="mb-2">
                   <label for="zip" class="form-label">Enter your zip code:</label>
@@ -114,8 +57,8 @@
     See the project on <a href="https://github.com/cetorres/citizenship-test" target="_blank">GitHub</a>.
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
-  <script src="find_legislators.js"></script>
-  <script src="questions.js"></script>
-  <script src="app.js"></script>
+  <script src="js/find_legislators.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

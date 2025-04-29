@@ -1,5 +1,5 @@
 const findLegislators = async (zip, state) => {
-  const governorsRes = await fetch('state_governors.json', {
+  const governorsRes = await fetch('../data/state_governors.json', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +11,7 @@ const findLegislators = async (zip, state) => {
     throw new Error(`Error: ${governorsRes.status} ${governorsRes.statusText}`);
   }
 
-  const legislatorsRes = await fetch('legislators-current.json', {
+  const legislatorsRes = await fetch('../data/legislators_current.json', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const findLegislators = async (zip, state) => {
     throw new Error(`Error: ${legislatorsRes.status} ${legislatorsRes.statusText}`);
   }
 
-  const zipRes = await fetch('zip_to_district.json', {
+  const zipRes = await fetch('../data/zip_to_district.json', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
