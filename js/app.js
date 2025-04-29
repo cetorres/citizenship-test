@@ -170,7 +170,7 @@ function clearLegislators() {
 }
 
 async function loadStates() {
-	const statesRes = await fetch('../data/state_governors.json', {
+	const statesRes = await fetch('data/state_governors.json', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
